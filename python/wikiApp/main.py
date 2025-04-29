@@ -15,8 +15,6 @@ style = Style(theme='darkly')   # comment to turn off theme
 window.geometry("800x400")
 window.title("Python Wikipedia")
 
-window.config()
-
 def searchWiki():
     try:
         query = searchInput.get()
