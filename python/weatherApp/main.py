@@ -1,32 +1,30 @@
-import tkinter as tk
-import requests
-import datetime as dt
-from config import MY_API_KEY
+import tkinter as tk                    # GUI module for creating window applications
+import requests                         # To send HTTP requests to API
+from config import MY_API_KEY           # Your API key file
 
-
+# Base address for downloading weather forecast from OpenWeatherMap
 BASE_URL = "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid="
 
-
+# Initialize the main application window
 window = tk.Tk()
-
 window.geometry("800x400")
 window.title("Weather App")
-
 window.config(bg='white')
 
+# Function to convert temperature from Kelvin to Celsius and Fahrenheit
 def kelvin_to_celsius_fahrenheit(kelvin):
     celsius = kelvin - 273.15
     fahrenheit = celsius * (9/5) + 32
     return celsius, fahrenheit
 
-
+# Main function responsible for weather search
 def searchWeather():
     try:
-        CITY = searchInput.get()
-        url = BASE_URL + MY_API_KEY + "&q=" + CITY
+        CITY = searchInput.get()                        # Getting city name from text field
+        url = BASE_URL + MY_API_KEY + "&q=" + CITY      # Building the query URL
+        response = requests.get(url).json()             # Sending the request and converting the response to JSON
 
-        response = requests.get(url).json()
-
+        # Reading weather data from API response
         temp_kelvin = response['list'][0]['main']['temp']
         temp_celsius, temp_fahrenheit = kelvin_to_celsius_fahrenheit(temp_kelvin)
         feels_like_kelvin = response['list'][0]['main']['feels_like']
@@ -35,7 +33,7 @@ def searchWeather():
         humidity = response['list'][0]['main']['humidity']
         description = response['list'][1]["weather"][0]['description']
 
-
+        # Formatting results as readable text
         result = result = (
             f"📍 Weather in {CITY}\n\n"
             f"🌡️ Temperature: {temp_celsius:.2f}°C / {temp_fahrenheit:.2f}°F\n"
@@ -45,12 +43,14 @@ def searchWeather():
             f"🌥️ Condition: {description.capitalize()}"
         )
 
-        resultBox.config(state=tk.NORMAL)    # Enable editing
+        # Insert the result into the text field
+        resultBox.config(state=tk.NORMAL) 
         resultBox.delete('1.0', tk.END)
         resultBox.insert('1.0', result, "center")
-        resultBox.config(state=tk.DISABLED)  # Disable after inserting
+        resultBox.config(state=tk.DISABLED)
     
     except Exception:
+        # Error handling (e.g. no city or no connection)
         resultBox.config(state=tk.NORMAL)
         resultBox.delete("1.0", tk.END)
         resultBox.insert("1.0", "No results found.", "center")
@@ -58,7 +58,8 @@ def searchWeather():
 
 
 
-# Elements of UI
+# ---------------- UI ELEMENTS ----------------#
+
 header = tk.Label(window, text="Weather App", font=("Arial", 20), bg='white')
 header.pack(pady=10)
 
@@ -78,4 +79,5 @@ resultBox.tag_config("center", justify="center")
 resultBox.config(state=tk.DISABLED)
 resultBox.pack(padx=10, pady=10)
 
+# Uruchomienie pętli głównej aplikacji
 window.mainloop()
