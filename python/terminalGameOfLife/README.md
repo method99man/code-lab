@@ -16,9 +16,9 @@ Requirements
 Python 3.x
 
 Run the Program
-"""bash
+```bash
 python game_of_life.py
-"""
+```
 The simulation runs in the terminal.
 Press Ctrl + C to stop the program at any time.
 
@@ -35,3 +35,26 @@ Press Ctrl + C to stop the program at any time.
 - Frame delay: Change time.sleep(1) to speed up or slow down the animation.
 - Initial pattern: Replace gridInit() with a custom starter layout.
 
+## 📸 Example Output
+```bash
+■■■                  
+  ■                  
+■■                   
+         ■■■        
+           ■        
+          ■■        
+                    
+     ■■             
+     ■■             
+                    
+        ■■          
+        ■■          
+                    
+                    
+   ■                 
+    ■               
+   ■■               
+                    
+                    
+Press Ctrl-C to quit.
+```
