@@ -43,6 +43,7 @@ Each cell in a 2D grid is either **alive** or **dead**. For each generation:
 
 - Python 3.7+
 - [Pygame](https://www.pygame.org/)
+- [Numpy](https://numpy.org/)
 
 Install dependencies:
 
