@@ -1,0 +1,80 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page layout and background */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: system-ui, sans-serif;
+    background: #3F5EFB;
+    background: linear-gradient(100deg, rgba(63, 94, 251, 1) 0%, rgba(108, 88, 217, 1) 30%, rgba(145, 83, 189, 1) 60%, rgba(186, 78, 157, 1) 80%);
+}
+
+/* Main app container */
+.container {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0,0,0,.15;
+    text-align: center;
+}
+
+/* Application title */
+.container h1{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Shared button styles */
+.container button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    margin-top: 10px;
+}
+
+/* Input field styling */
+.container input {
+    width: 100%;
+    padding: 10px 16px;
+}
+
+/* Tasks section */
+.tasks {
+    width: 100%;
+    padding: 24px;
+    text-align: left;
+}
+
+/* Delete button */
+.tasks button {
+    border: none;
+    background: #fff;
+    border-radius: 8px;
+    padding: 5px;
+    text-align: end;
+}
+
+/* Trash icon size */
+.del img {
+    height: 16px;
+    width: 16px;
+}
+
+/* Remove default list styling */
+tasks ul {
+    list-style-type: none;
+}
+
+/* Pointer cursor on hover */
+button:hover {
+    cursor: pointer;
+}
